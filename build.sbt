@@ -6,6 +6,9 @@ lazy val root = (project in file("."))
   .settings(name := "catseffect-tagless")
 
 libraryDependencies ++= Seq(
+  "org.slf4j" % "slf4j-api" % "2.0.6",
+  "ch.qos.logback" % "logback-core" % "1.4.5",
+  "ch.qos.logback" % "logback-classic" % "1.4.5",
   "org.http4s" %% "http4s-dsl" % "0.23.18",
   "org.http4s" %% "http4s-blaze-server" % "0.23.13",
   "org.http4s" %% "http4s-circe" % "0.23.18",
