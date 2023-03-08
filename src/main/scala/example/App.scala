@@ -3,6 +3,7 @@ package example
 import cats.effect.ExitCode
 import cats.effect.IO
 import cats.effect.IOApp
+import example.db.DB
 import example.users.UserRoutes
 import example.users.Users
 
