@@ -4,10 +4,11 @@ import cats.effect.kernel.Concurrent
 import cats.syntax.flatMap._
 import cats.syntax.functor._
 import example.users.Users.NewUser
+import example.users.Users.UserId
 import org.http4s.HttpRoutes
 import org.http4s.circe.CirceEntityCodec._
 import org.http4s.circe._
-import org.http4s.dsl._
+import org.http4s.dsl.Http4sDsl
 
 case class UserRoutes[F[_]] private (definition: HttpRoutes[F])
 object UserRoutes {
@@ -28,6 +29,12 @@ object UserRoutes {
           userId <- users.register(newUser)
           response <- Created(UserCreated(userId))
         } yield response
+
+      case GET -> Root / "users" / UUIDVar(id) =>
+        val userId = UserId(id)
+        users
+          .getUser(userId)
+          .foldF(NotFound(s"User [userId = $id] not found"))(user => Ok(user))
     }
 
     UserRoutes(routes)

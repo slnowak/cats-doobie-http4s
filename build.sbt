@@ -16,6 +16,7 @@ libraryDependencies ++= Seq(
   "io.circe" %% "circe-generic-extras" % "0.14.3",
   "org.typelevel" %% "cats-effect" % "3.4.8",
   "org.tpolecat" %% "doobie-hikari" % "1.0.0-RC2",
+  "org.tpolecat" %% "doobie-postgres" % "1.0.0-RC2",
   "org.testcontainers" % "postgresql" % "1.17.6",
   "de.lhns" %% "doobie-flyway" % "0.3.3",
   "org.postgresql" % "postgresql" % "42.5.4"
